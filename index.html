@@ -6,26 +6,40 @@ link sound from online to simulate the color change and sychronize it in js -->
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anta&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simon</title>
+    <title>simon</title>
     <script defer src="js/main.js"></script>
     <link defer rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-    <h1>Simon</h1>
+    <h1>simon</h1>
     <div id="simonGame">
         <div class="color-panel" id="red"></div>
         <div class="color-panel" id="green"></div>
         <div class="color-panel" id="blue"></div>
         <div class="color-panel" id="yellow"></div>
     </div>
-    <button id="startButton">Start</button>
+    <div class="button-contaier">
+        <button id="startButton">Start</button>
+        </div>
+<h2 id="score">Score:  </h2>
 
-    
+<!-- audio elements -->
+
+<audio id="redSound" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" preload="auto"></audio>
+<audio id="greenSound" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" preload="auto"></audio>
+<audio id="blueSound" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" preload="auto"></audio>
+<audio id="yellowSound" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" preload="auto"></audio>
+
 </body>
+
 </html>
-
-
-

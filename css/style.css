@@ -8,8 +8,17 @@ play with color brightness to simulate it lighting up */
 
 /* style.css */
 
+h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    text-align: center;
+    margin: 5vh;
+    color: gray;
+}
+
 body {
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -24,21 +33,71 @@ body {
 }
 
 .color-panel {
+    align-items: center;
     width: 50%;
     height: 50%;
-    opacity: 0.6;
+    opacity: 0.4;
+    transition: opacity 0.9;
     cursor: pointer;
+
+
 }
 
-#red { background-color: red; }
-#green { background-color: green; }
-#blue { background-color: blue; }
-#yellow { background-color: yellow; }
+#red { 
+    background-color: red; 
+    border-top-left-radius: 30px;
+}
+
+#green { 
+    background-color: green;
+    border-top-right-radius: 30px;
+}
+
+#blue {
+    background-color: blue;
+    border-bottom-left-radius: 30px;
+}
+
+#yellow {
+    background-color: yellow;
+    border-bottom-right-radius: 30px;
+}
 
 /* Add a slight increase in opacity to simulate lighting up */
 
+.color-panel.active {
+    opacity: 1;
+}
 
-#start {
+.button-container {
     display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+#startButton {
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    width: 15vmin;
+    margin: 2vmin;
+    background-color: gray;
+    border-radius: 2vmin;
+    font-size: 4vmin;
+    outline: black;
+    margin: 10vh;
+}
 
+button:hover {
+    background-color: gray;
+    color: white;
+}
+
+h2 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+    font-size: medium;
+    text-align: right;
+    margin: 10vh;
+    color: gray;
 }

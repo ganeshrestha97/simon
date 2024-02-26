@@ -3,7 +3,14 @@
 // const sequence
 
 
+const sequence = []
+let playerSequence = []
+let round = 0
+
 /*----- state variables -----*/
+
+
+
 
 // round
 
@@ -11,22 +18,12 @@
 
 /*----- cached elements  -----*/
 
+const panels = document.querySelectorAll('.color-panel')
 
 
 /*----- event listeners -----*/
 
-
+document.getElementById('startButton').addEventListener('click', startGame)
 
 /*----- functions -----*/
-
-// function randomPanel() {
-//     const colors = ['red', 'yellow', 'green', 'blue']
-//     return colors[Math.floor]
-// }
-
-// function flashPanel
-
-// function panelClicked
-
-
 
