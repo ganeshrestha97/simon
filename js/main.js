@@ -51,7 +51,7 @@ function nextLevel() {
         setTimeout(() => {
             playSequence(color)
         }, 
-        (index + 1) * 300)
+        (index + 1) * 600)
     })
 }
 
