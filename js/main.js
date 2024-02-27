@@ -2,6 +2,11 @@
 
 const sequence = []
 
+const soundRed = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3')
+const soundGreen = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3')
+const soundBlue = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3')
+const soundYellow = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
+
 /*----- state variables -----*/
 
 let playerSequence = []
@@ -33,14 +38,13 @@ function startGame() {
     scores.player = 0 //resets the score
     updateScore(scores.player) //updates the score display to 0
     nextLevel()
-    scores[winner] +=1
+    scores[winner] += 1
 }
 
 function playSequence(color) {
     const panel = document.getElementById(color)
-    // const sound = new Audio(Element.getAttribute('data-sound'))
-    // data-sound.play()
     panel.classList.add('active')
+    playSound(color)
     setTimeout(() => {
         panel.classList.remove('active')
     }, 400)
@@ -75,10 +79,17 @@ function nextColor() {
 
 function panelClicked(panelColor) {
     playerSequence.push(panelColor)
+    playSound(panelColor)
     const index = playerSequence.length - 1
-    if (playerSequence[index] !== sequence[index]) {
-        alert('Game over!')
-        startGame() //resets the game
+    if (playerSequence[index] !== sequence[index]) { // game over logic
+        // alert('Game over!')
+        document.body.style.backgroundColor = 'grey' // change background color to indicate game over
+        document.getElementById('gameOverMessage').style.display = 'block' // game over message
+        setTimeout(() => { 
+            document.body.style.backgroundColor = '' // to reset background color after delay
+            document.getElementById('gameOverMessage').style.display = '' // hide game over message
+            // startGame() //resets the game
+        }, 3000)
         return
     }
     playSequence(panelColor)
@@ -99,15 +110,36 @@ panels.forEach(panel => {
 
 // transfer/visualize all state to the DOM
 
-function updateScore(currentScore) {
+function updateScore(newScore) {
     const scoreEl = document.getElementById('currentScore')
-    scoreEl.innerText = currentScore
+    scoreEl.innerText = newScore
 }
 
 function updateHighestScore(currentScore) {
-    if (currentScore >= highestScore) {
+    if (currentScore > highestScore) {
         highestScore = currentScore
         const highestScoreEl = document.getElementById('highestScore')
         highestScoreEl.innerText = highestScore
     }
+}
+
+
+function playSound(color) {
+    switch(color) {
+        case 'red':
+            sound = soundRed
+            break
+        case 'green':
+            sound = soundGreen
+            break
+        case 'blue':
+            sound = soundBlue
+            break
+        case 'yellow':
+            sound = soundYellow
+            break
+            return
+    }
+    sound.currentTime = 0
+    sound.play()
 }
