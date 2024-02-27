@@ -13,25 +13,27 @@ h1 {
     font-weight: 100;
     font-style: normal;
     text-align: center;
+    font-size: 6vh;
     margin: 5vh;
     color: gray;
 }
 
 body {
-    /* display: flex;
-    flex-wrap: wrap; */
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #333;
+    background: radial-gradient(circle, rgb(0, 0, 0), rgb(56, 56, 56), rgb(90, 89, 89));
+    flex-direction: column;
 }
 
 #simonGame {
     display: flex;
-
     flex-wrap: wrap;
-    width: 200px;
-    height: 200px;
+    width: 50vh;
+    height: 50vh;
+    margin-top: 2vh;
+    
 }
 
 .color-panel {
@@ -41,28 +43,26 @@ body {
     opacity: 0.45;
     transition: opacity 0.7;
     cursor: pointer;
-
-
 }
 
 #red {
     background-color: red;
-    border-top-left-radius: 30px;
+    border-top-left-radius: 10vh;
 }
 
 #green {
     background-color: green;
-    border-top-right-radius: 30px;
+    border-top-right-radius: 10vh;
 }
 
 #blue {
     background-color: blue;
-    border-bottom-left-radius: 30px;
+    border-bottom-left-radius: 10vh;
 }
 
 #yellow {
     background-color: yellow;
-    border-bottom-right-radius: 30px;
+    border-bottom-right-radius: 10vh;
 }
 
 /* Add a slight increase in opacity to simulate lighting up */
@@ -72,21 +72,19 @@ body {
 }
 
 .button-container {
-    margin-top: 10px;
+    margin-top: 2vh;
 }
 
 #startButton {
     font-family: "Roboto", sans-serif;
     font-weight: 200;
     font-style: normal;
-    position: absolute;
-    width: 20vmin;
-    margin: 2vmin;
+    width: 12vh;
+    margin: 2vh;
     background-color: gray;
-    border-radius: 2vmin;
-    font-size: 4vmin;
-    outline: black;
-    margin: 10vh;
+    border-radius: 2vh;
+    font-size: 3vh;
+    margin-top: 10vh;
     cursor: pointer;
 }
 
@@ -98,11 +96,12 @@ button:hover {
 .scoreTrack {
     font-family: "Roboto", sans-serif;
     font-weight: 50;
-    font-style: normal;
-    font-size: 4vh;
+    font-size: 3vh;
+    position: fixed;
+    bottom: 20px;
+    right: 6vh;
     text-align: right;
-    margin-right: 10vh;
-    color: gray;
+    color: rgb(154, 153, 153);
 }
 
 #score {
@@ -121,6 +120,6 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* adjust the positioning to the exact center */
     text-align: center;
 }
