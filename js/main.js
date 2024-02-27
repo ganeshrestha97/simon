@@ -6,6 +6,7 @@ const sequence = []
 
 let playerSequence = []
 let round = 0
+let highestScore = 0 //initializes the highest score
 
 /*----- cached elements  -----*/
 const startButton = document.getElementById('startButton')
@@ -23,16 +24,18 @@ init()
 function init() {
     scores = {}
     results = {}
-    render()
 }
+
 function startGame() {
     sequence.length = 0
     playerSequence.length = 0
     round = 0
+    scores.player = 0 //resets the score
+    updateScore(scores.player) //updates the score display to 0
     nextLevel()
     scores[winner] +=1
-    render()
 }
+
 function playSequence(color) {
     const panel = document.getElementById(color)
     // const sound = new Audio(Element.getAttribute('data-sound'))
@@ -53,6 +56,9 @@ function nextLevel() {
         }, 
         (index + 1) * 600)
     })
+    scores.player += 0
+    updateScore(scores.player)
+    updateHighestScore(scores.player)
 }
 
 
@@ -72,13 +78,15 @@ function panelClicked(panelColor) {
     const index = playerSequence.length - 1
     if (playerSequence[index] !== sequence[index]) {
         alert('Game over!')
-        startGame()
+        startGame() //resets the game
         return
     }
     playSequence(panelColor)
         if (playerSequence.length === sequence.length) {
             setTimeout(() => {
                 nextLevel()
+                scores.player += 1 //increases the score by 1
+                updateScore(scores.player) //updates the displayed score
             }, 400)
     }
 }
@@ -91,13 +99,15 @@ panels.forEach(panel => {
 
 // transfer/visualize all state to the DOM
 
-function renderScores() {
-    for (let key in scores) {
-        const scoreEl = document.getElementById(`${key}-score`)
-        scoreEl.innerText = scores[key]
-    }
-}
-function render() {
-    renderScores()
+function updateScore(currentScore) {
+    const scoreEl = document.getElementById('currentScore')
+    scoreEl.innerText = currentScore
 }
 
+function updateHighestScore(currentScore) {
+    if (currentScore >= highestScore) {
+        highestScore = currentScore
+        const highestScoreEl = document.getElementById('highestScore')
+        highestScoreEl.innerText = highestScore
+    }
+}

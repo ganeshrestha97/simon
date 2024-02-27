@@ -28,6 +28,7 @@ body {
 
 #simonGame {
     display: flex;
+
     flex-wrap: wrap;
     width: 200px;
     height: 200px;
@@ -71,7 +72,7 @@ body {
 }
 
 .button-container {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #startButton {
@@ -79,7 +80,7 @@ body {
     font-weight: 200;
     font-style: normal;
     position: absolute;
-    width: 15vmin;
+    width: 20vmin;
     margin: 2vmin;
     background-color: gray;
     border-radius: 2vmin;
@@ -94,12 +95,20 @@ button:hover {
     color: white;
 }
 
-h2 {
+.scoreTrack {
     font-family: "Roboto", sans-serif;
-    font-weight: 100;
+    font-weight: 50;
     font-style: normal;
-    font-size: medium;
+    font-size: 4vh;
     text-align: right;
-    margin: 10vh;
+    margin-right: 10vh;
     color: gray;
+}
+
+#score {
+    margin-bottom: 0;
+}
+
+#higestScore {
+    margin-top: 0;
 }
