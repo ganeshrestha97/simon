@@ -17,7 +17,6 @@ let gameActive = true   // whether or not the game is in play or not
 
 const startButton = document.getElementById('startButton')
 const panels = document.querySelectorAll('.color-panel')
-const panel = document.getElementById('color')
 const scoreEl = document.getElementById('currentScore')
 const highestScoreEl = document.getElementById('highestScore')
 
@@ -52,6 +51,7 @@ function startGame() {
 }
 
 function playSequence(color) {
+    const panel = document.getElementById(color)
     panel.classList.add('active')
     playSound(color)
     setTimeout(function () {
