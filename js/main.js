@@ -17,8 +17,11 @@ let gameActive = true   // whether or not the game is in play or not
 
 const startButton = document.getElementById('startButton')
 const panels = document.querySelectorAll('.color-panel')
+const panel = document.getElementById(color)
 const scoreEl = document.getElementById('currentScore')
 const highestScoreEl = document.getElementById('highestScore')
+const colors = ['red', 'blue', 'green', 'yellow']
+const index = playerSequence.length - 1
 
 
 /*----- event listeners -----*/
@@ -33,6 +36,8 @@ panels.forEach(function(panel) {
 
 
 /*----- functions -----*/
+
+
 init()
 function init() {
     scores = {}
@@ -40,20 +45,18 @@ function init() {
 }
 
 function startGame() {
-    sequence.length = []
-    playerSequence.length = []
+    sequence= []
+    playerSequence = []
     gameActive = true
     scores.player = 0 //resets the score
     updateScore(scores.player) //updates the score display to 0
     nextLevel()
-    // scores[winner] += 1
 }
 
 function playSequence(color) {
-    const panel = document.getElementById(color)
     panel.classList.add('active')
     playSound(color)
-    setTimeout(() => {
+    setTimeout(function () {
         panel.classList.remove('active')
     }, 400)
 }
@@ -61,11 +64,11 @@ function playSequence(color) {
 
 function nextLevel() {
     // updateScore(scores.player)
-    updateHighestScore(scores.player)
+    // updateHighestScore(scores.player)
     if (gameActive) {
         playerSequence = []
         sequence.push(nextColor())
-        sequence.forEach((color, index) => {
+        sequence.forEach(function (color, index) {
             setTimeout(function() {
                 playSequence(color)
             }, (index + 1) * 600)
@@ -76,7 +79,6 @@ function nextLevel() {
 }
 
 function nextColor() {
-    const colors = ['red', 'blue', 'green', 'yellow']
     return colors[Math.floor(Math.random() * colors.length)]
 }
 
@@ -86,7 +88,6 @@ function panelClicked(panelColor) {
 
     playerSequence.push(panelColor)
     playSound(panelColor)
-    const index = playerSequence.length - 1
     if (playerSequence[index] !== sequence[index]) { // game over logic
         // alert('Game over!')
         endGame(false)
@@ -100,8 +101,8 @@ function panelClicked(panelColor) {
     if (playerSequence.length === sequence.length) {
         setTimeout(function() {
             scores.player += 1 //increases the score by 1
-            updateHighestScore(scores.player) // checks and update highest score
             updateScore(scores.player) //updates the displayed score
+            updateHighestScore(scores.player) // checks and update highest score
             nextLevel()
         }, 500)
     }
@@ -132,28 +133,22 @@ function playSound(color) {
 // transfer/visualize all state to the DOM
 
 function updateScore(newScore) {
-    const scoreEl = document.getElementById('currentScore')
     scoreEl.innerText = newScore
-    if (newScore === 3) {   // assumen the number is the winning score
+    if (newScore === 5) {   // the number is the winning score
         gameActive = false  // stops the game
-        // const winMessageEl = document.getElementById('winMessage')
-        // winMessageEl.style.display = 'block'
         endGame(true)
-        setTimeout(() => {
+        setTimeout(function() {
             document.getElementById('winMessage').style.display = ''
         }, 2000)
     }
 }
 
-
 function updateHighestScore(currentScore) {
     if (currentScore > highestScore) {
         highestScore = currentScore
-        const highestScoreEl = document.getElementById('highestScore')
         highestScoreEl.innerText = highestScore
     }
 }
-
 
 
 function endGame(win) {
