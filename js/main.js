@@ -17,11 +17,9 @@ let gameActive = true   // whether or not the game is in play or not
 
 const startButton = document.getElementById('startButton')
 const panels = document.querySelectorAll('.color-panel')
-const panel = document.getElementById(color)
+const panel = document.getElementById('color')
 const scoreEl = document.getElementById('currentScore')
 const highestScoreEl = document.getElementById('highestScore')
-const colors = ['red', 'blue', 'green', 'yellow']
-const index = playerSequence.length - 1
 
 
 /*----- event listeners -----*/
@@ -79,6 +77,7 @@ function nextLevel() {
 }
 
 function nextColor() {
+    const colors = ['red', 'blue', 'green', 'yellow']
     return colors[Math.floor(Math.random() * colors.length)]
 }
 
@@ -88,6 +87,7 @@ function panelClicked(panelColor) {
 
     playerSequence.push(panelColor)
     playSound(panelColor)
+    const index = playerSequence.length - 1
     if (playerSequence[index] !== sequence[index]) { // game over logic
         // alert('Game over!')
         endGame(false)
