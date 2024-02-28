@@ -12,6 +12,7 @@ let sequence = []   // sequence with which the color flashes
 let playerSequence = [] // sequence with which the player is pressing the sequence
 let highestScore = 0 //initializes the highest score
 let gameActive = true   // whether or not the game is in play or not
+let scores = {player:0}
 
 /*----- cached elements  -----*/
 
@@ -35,18 +36,16 @@ panels.forEach(function(panel) {
 /*----- functions -----*/
 
 
-init()
 function init() {
-    scores = {}
-    results = {}
+    sequence = []
+    playerSequence = []
+    gameActive = true
+    scores.player = 0   //resets the score
+    updateScore(scores.player)    //updates the score display to 0
 }
 
 function startGame() {
-    sequence= []
-    playerSequence = []
-    gameActive = true
-    scores.player = 0 //resets the score
-    updateScore(scores.player) //updates the score display to 0
+    init() // this resets the game
     nextLevel()
 }
 
@@ -61,8 +60,6 @@ function playSequence(color) {
 // console.log(playSequence)
 
 function nextLevel() {
-    // updateScore(scores.player)
-    // updateHighestScore(scores.player)
     if (gameActive) {
         playerSequence = []
         sequence.push(nextColor())
@@ -130,7 +127,6 @@ function playSound(color) {
 }
 
 
-// transfer/visualize all state to the DOM
 
 function updateScore(newScore) {
     scoreEl.innerText = newScore
@@ -161,3 +157,4 @@ function endGame(win) {
         document.getElementById('gameOverMessage').style.display = 'block'
     }
 }
+
