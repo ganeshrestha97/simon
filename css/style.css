@@ -123,3 +123,15 @@ button:hover {
     transform: translate(-50%, -50%); /* adjust the positioning to the exact center */
     text-align: center;
 }
+
+#winMessage {
+    font-family: "Roboto", sans-serif;
+    display: none;
+    color: gold;
+    font-size: 20vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* adjust the positioning to the exact center */
+    text-align: center;
+}

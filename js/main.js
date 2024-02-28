@@ -1,23 +1,24 @@
 /*----- constants -----*/
 
-const sequence = []
-
 const soundRed = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3')
 const soundGreen = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3')
 const soundBlue = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3')
 const soundYellow = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3')
 
-
 /*----- state variables -----*/
 
+let sequence = []
 let playerSequence = []
 let round = 0
 let highestScore = 0 //initializes the highest score
+let gameActive = true
 
 /*----- cached elements  -----*/
+
 const startButton = document.getElementById('startButton')
 const panels = document.querySelectorAll('.color-panel')
-
+const scoreEl = document.getElementById('currentScore')
+const highestScoreEl = document.getElementById('highestScore')
 
 
 /*----- event listeners -----*/
@@ -26,7 +27,6 @@ startButton.addEventListener('click', startGame)
 
 /*----- functions -----*/
 init()
-
 function init() {
     scores = {}
     results = {}
@@ -40,6 +40,7 @@ function startGame() {
     updateScore(scores.player) //updates the score display to 0
     nextLevel()
     scores[winner] += 1
+    gameActive === true
 }
 
 function playSequence(color) {
@@ -50,21 +51,25 @@ function playSequence(color) {
         panel.classList.remove('active')
     }, 400)
 }
-console.log(playSequence)
+// console.log(playSequence)
 
 function nextLevel() {
-    playerSequence = []
-    sequence.push(nextColor())
-    sequence.forEach((color, index) => {
-        setTimeout(() => {
-            playSequence(color)
-        }, 
-        (index + 1) * 600)
-    })
-    scores.player += 0
     updateScore(scores.player)
     updateHighestScore(scores.player)
+    if (gameActive) {
+        playerSequence = []
+        sequence.push(nextColor())
+        sequence.forEach((color, index) => {
+            setTimeout(() => {
+                playSequence(color)
+            },
+                (index + 1) * 600)
+        }) 
+    } else {
+        return 
+    }
 }
+  
 
 
 function nextColor() {
@@ -84,22 +89,22 @@ function panelClicked(panelColor) {
     const index = playerSequence.length - 1
     if (playerSequence[index] !== sequence[index]) { // game over logic
         // alert('Game over!')
-        document.body.style.backgroundColor = 'grey' // change background color to indicate game over
+        document.body.style.backgroundColor = 'gray' // change background color to indicate game over
         document.getElementById('gameOverMessage').style.display = 'block' // game over message
-        setTimeout(() => { 
+        setTimeout(() => {
             document.body.style.backgroundColor = '' // to reset background color after delay
             document.getElementById('gameOverMessage').style.display = '' // hide game over message
             // startGame() //resets the game
-        }, 3000)
+        }, 2000)
         return
     }
     playSequence(panelColor)
-        if (playerSequence.length === sequence.length) {
-            setTimeout(() => {
-                nextLevel()
-                scores.player += 1 //increases the score by 1
-                updateScore(scores.player) //updates the displayed score
-            }, 400)
+    if (playerSequence.length === sequence.length) {
+        setTimeout(() => {
+            nextLevel()
+            scores.player += 1 //increases the score by 1
+            updateScore(scores.player) //updates the displayed score
+        }, 500)
     }
 }
 
@@ -109,24 +114,9 @@ panels.forEach(panel => {
     })
 })
 
-// transfer/visualize all state to the DOM
-
-function updateScore(newScore) {
-    const scoreEl = document.getElementById('currentScore')
-    scoreEl.innerText = newScore
-}
-
-function updateHighestScore(currentScore) {
-    if (currentScore > highestScore) {
-        highestScore = currentScore
-        const highestScoreEl = document.getElementById('highestScore')
-        highestScoreEl.innerText = highestScore
-    }
-}
-
 
 function playSound(color) {
-    switch(color) {
+    switch (color) {
         case 'red':
             sound = soundRed
             break
@@ -143,4 +133,47 @@ function playSound(color) {
     }
     sound.currentTime = 0
     sound.play()
+}
+
+
+// transfer/visualize all state to the DOM
+
+function updateScore(newScore) {
+    const scoreEl = document.getElementById('currentScore')
+    scoreEl.innerText = newScore
+    if (newScore === 3) {
+        gameActive === false
+        const winMessageEl = document.getElementById('winMessage')
+        winMessageEl.style.display = 'block'
+        endGame(true)
+        setTimeout(() => {
+            document.body.style.backgroundColor = ''
+            document.getElementById('winMessage').style.display = ''
+        }, 2000)
+    } 
+}
+
+
+function updateHighestScore(currentScore) {
+    if (currentScore > highestScore) {
+        highestScore = currentScore
+        const highestScoreEl = document.getElementById('highestScore')
+        highestScoreEl.innerText = highestScore
+    }
+}
+
+
+
+function endGame(win) {
+    panels.forEach(panel => {
+        panel.removeEventListener('click', panelClicked)
+    })
+    sequence.length = 0
+    playerSequence.length = 0
+    if (win) {
+        document.getElementById('winMessage').style.display = 'block'
+
+    } else {
+        document.getElementById('gameOverMessage').style.display = 'block'
+    }
 }
