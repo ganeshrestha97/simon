@@ -33,7 +33,7 @@ body {
     width: 50vh;
     height: 50vh;
     margin-top: 2vh;
-    
+
 }
 
 .color-panel {
@@ -41,7 +41,7 @@ body {
     width: 50%;
     height: 50%;
     opacity: 0.6;
-    transition: opacity ;
+    transition: opacity;
     cursor: pointer;
 }
 
@@ -124,7 +124,8 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* adjust the positioning to the exact center */
+    transform: translate(-50%, -50%);
+    /* adjust the positioning to the exact center */
     text-align: center;
 }
 
@@ -136,18 +137,40 @@ button:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* adjust the positioning to the exact center */
+    transform: translate(-50%, -50%);
+    /* adjust the positioning to the exact center */
     text-align: center;
 }
 
 @media (max-width: 500px) {
-    .color-panel {
-        width: 40%;
-        height: 40%;
+    h1 {
+        align-items: center;
+        font-size: 4vh;
     }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85vh;
+    }
+
+    .color-panel {
+        align-items: center;
+        width: 25vh;
+        height: 25vh;
+    }
+
+    #startbutton {
+        align-items: center;
+        width: 9vh;
+        font-size: 2vh;
+    }
+
     #gameOverMessage {
         font-size: 10vh;
     }
+
     #winMessage {
         font-size: 10vh;
     }
