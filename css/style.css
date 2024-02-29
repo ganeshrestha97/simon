@@ -33,7 +33,6 @@ body {
     width: 50vh;
     height: 50vh;
     margin-top: 2vh;
-
 }
 
 .color-panel {
@@ -155,23 +154,29 @@ button:hover {
         height: 75vh;
     }
 
+    #simonGame {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
     .color-panel {
         align-items: center;
-        width: 20vh;
-        height: 20vh;
+        width: 25vh;
+        height: 25vh;
     }
     .scoreTrack {
         font-size: 2vh;
         position: fixed;
         bottom: 1vh;
-        right: 2vh;
+        right: 3vh;
         text-align: right;
     }
     
-
     #startbutton {
         align-items: center;
-        width: 9vh;
+        width: 10vh;
         font-size: 2vh;
     }
 
