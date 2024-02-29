@@ -1,6 +1,8 @@
 
  /*----- constants -----*/
 
+ //sound files
+
 const soundRed = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3')
 const soundGreen = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3')
 const soundBlue = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3')
@@ -10,9 +12,9 @@ const soundYellow = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4
 
 let sequence = []   // sequence with which the color flashes
 let playerSequence = [] // sequence with which the player is pressing the sequence
-let highestScore = 0 //initializes the highest score
-let gameActive = true   // whether or not the game is in play or not
-let scores = {player:0}
+let highestScore = 0 // initializes the highest score
+let gameActive = true   // whether the game is in play or not
+let scores = {player:0} // holds player score for the game
 
 /*----- cached elements  -----*/
 
@@ -34,7 +36,6 @@ panels.forEach(function(panel) {
 
 
 /*----- functions -----*/
-
 
 function init() {
     sequence = []
