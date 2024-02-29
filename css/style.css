@@ -13,7 +13,7 @@ h1 {
     font-weight: 100;
     font-style: normal;
     text-align: center;
-    font-size: 6vh;
+    font-size: 8vh;
     margin: 5vh;
     color: gray;
 }
@@ -145,21 +145,29 @@ button:hover {
 @media (max-width: 500px) {
     h1 {
         align-items: center;
-        font-size: 4vh;
+        font-size: 6vh;
     }
 
     body {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 85vh;
+        height: 75vh;
     }
 
     .color-panel {
         align-items: center;
-        width: 25vh;
-        height: 25vh;
+        width: 20vh;
+        height: 20vh;
     }
+    .scoreTrack {
+        font-size: 2vh;
+        position: fixed;
+        bottom: 1vh;
+        right: 2vh;
+        text-align: right;
+    }
+    
 
     #startbutton {
         align-items: center;
@@ -167,11 +175,11 @@ button:hover {
         font-size: 2vh;
     }
 
-    #gameOverMessage {
-        font-size: 10vh;
+    #gameOverMessage, #winMessage {
+        font-size: 8vh;
     }
 
     #winMessage {
-        font-size: 10vh;
+        font-size: 8vh;
     }
 }
