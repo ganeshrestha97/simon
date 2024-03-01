@@ -2,7 +2,7 @@
 ________
 
 
-## Background story
+## Background story:
 Two high school best friends were chatting and goofing around when they suddenly received a word that they got exact same score in their SAT's.
 
 Despite of being best friends, they always welcomed friendly competition between eachother, for they believed that it helped them grow. And at the time SAT score was supposed to be the ultimate challenge between them.
