@@ -22,7 +22,7 @@ However, if the player presses the wrong button by failing to follow the sequenc
 ### [Click to play Simon](https://ganeshrestha97.github.io/simon/)
 
 ## Screenshots
-![Game UI](https://imgur.com/IUN6Cjx)
+![Game UI](https://i.imgur.com/IUN6Cjx.png)
 
 ## Technologies Used
 
@@ -37,7 +37,7 @@ However, if the player presses the wrong button by failing to follow the sequenc
 -   Add buttons to be able to control the number of levels instead of having to go to back to the code everytime the player wants to elevate the level.
 
 ## Original Wireframe
-![Wireframe](https://imgur.com/es7JT4A)
+![Wireframe](https://i.imgur.com/es7JT4A.png)
 
 ## Credits
 
