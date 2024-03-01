@@ -29,6 +29,7 @@ However, if the player presses the wrong button by failing to follow the sequenc
 -   JavaScript
 -   HTML
 -   CSS
+-   Audio
 
 
 ## Next Steps
